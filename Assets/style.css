@@ -1,6 +1,7 @@
 #welcome {
     display: block;
 }
-.questions {
+.questions,
+.save_score {
     display: none;
 }

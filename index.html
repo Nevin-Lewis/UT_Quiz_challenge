@@ -11,8 +11,8 @@
 <body>
 <header>
   <div> High scores</div>
-  <div> Time left: __</div>
-  <div> Current score __</div>
+  <div> Time left:<span class="time"> 60</span></div>
+  <div> Current score <span class="score"></span></div>
 </header>
 <section id="welcome">
     <div> Coding Quiz</div>
@@ -22,13 +22,32 @@
 </section>
 <section class="questions">
     <h1 > </h1>
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-    <button class="next" type="button"></button>
+    <form id="MC">
+
+        <input name="A" type="radio">
+        <label name="Multiple_choice"> A </label>
+
+        <input type="radio" name="B">
+        <label name="Multiple_choice"> B </label>
+        
+        <input type="radio" name="C">
+        <label name="Multiple_choice"> C </label>
+        
+        <input type="radio" name="D">
+        <label name="Multiple_choice"> D </label>
+        
+    </form>
+    <button class="next" type="button"> Submit</button>
+</section>
+<section class="save_score">
+    <form>
+        <h1> Your score was <span class="score"> </span> 
+            Enter you initials below</h1>
+
+        <input name="name" type="text">
+        <button type="submit" class="save_close"> Save</button>
+    
+    </form>
 </section>
     
 <script src="./Assets/script.js"></script>  
