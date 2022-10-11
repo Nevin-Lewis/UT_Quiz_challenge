@@ -2,6 +2,7 @@
     display: block;
 }
 .questions,
-.save_score {
+.save_score,
+.highscore {
     display: none;
 }

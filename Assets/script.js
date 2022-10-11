@@ -6,6 +6,7 @@ var timerEl = document.querySelector(".time");
 var scoreEl = document.querySelector(".score");
 var saved = document.querySelector(".save_close");
 var names = document.getElementById("name_input");
+var scoretrack = document.querySelector("#scores");
 var timercount = 60;
 var count =0;
 var score = 0;
@@ -93,6 +94,17 @@ function storeScore() {
     highScore.name.push(names.value);
     highScore.scores.push(score)
     localStorage.setItem("highScore", JSON.stringify(highScore));
+for (var i = 0; i < highScore.length; i++) {
+    var todo = highScore[i];
+
+    var li = document.createElement("li");
+    li.textContent = todo;
+    li.setAttribute("data-index", i);
+    scoretrack.appendChild(li);
+  };
+  document.getElementsByClassName("save_score")[0].style.display = "none";
+  document.getElementsByClassName("highscore")[0].style.display = "block";
+ 
 }
 
 
