@@ -4,13 +4,14 @@ var hides = document.querySelector(".hide");
 var setText = document.querySelector(".next");
 var timerEl = document.querySelector(".time");
 var scoreEl = document.querySelector(".score");
-var name = document.querySelector("name");
 var saved = document.querySelector(".save_close");
+var names = document.getElementById("name_input");
 var timercount = 60;
 var count =0;
 var score = 0;
-var userAnswer = document.querySelectorAll('input[type=radio]:checked');
-console.log(saved)
+var highScore = {
+    name: [],
+    scores: [],};
 const test = [
     {Question: "test 1?", answers: {A:"op1", B:"op2", C:"op3", D:"op4"}, correctAnswer:'A'},
     {Question: "test 2?", answers: {A:"op1", B:"op2", C:"op3", D:"op4"}, correctAnswer:'B'},
@@ -20,11 +21,7 @@ const test = [
     {Question: "test 6?", answers: {A:"op1", B:"op2", C:"op3", D:"op4"}, correctAnswer:'B'},
 ];
 var correct_Answer = test.map(function (el) { return el.correctAnswer;});
-var highScore = {
-    name: name.value,
-    score: score.value,
-};
-localStorage.setItem("highScore", JSON.stringify(highScore));
+
 function hide(){
     document.getElementById("welcome").style.display = "none";
     document.getElementsByClassName("questions")[0].style.display = "block";
@@ -53,7 +50,8 @@ document.getElementsByClassName("questions")[0].children[0].textContent = test[c
 
 function Start(event){
 event.preventDefault();
-var user_Answer = document.querySelector('input[type=radio]:checked').name;
+init();
+var user_Answer = document.querySelector('input[type=radio]:checked').value;
 if (user_Answer == correct_Answer[count]){
     score += 10;}
 else if (user_Answer != correct_Answer[count] && timercount >10){
@@ -82,16 +80,25 @@ function gameover() {
     document.getElementsByClassName('score')[1].textContent= score
     document.getElementsByClassName("questions")[0].style.display = "none";
     document.getElementsByClassName("save_score")[0].style.display = "block";
-    clearInterval(timer);
-    document.getElementById("MC").reset();
-    count = 0;
+   
 }
-function save_score(event) {
-    localStorage.setItem("high_Score", JSON.stringify(score));
+function init() {
+    var save_highScore = JSON.parse(localStorage.getItem("highScore"));
+    if (save_highScore !== null) {
+        highScore = save_highScore;
+        
+    }
 }
+function storeScore() {
+    highScore.name.push(names.value);
+    highScore.scores.push(score)
+    localStorage.setItem("highScore", JSON.stringify(highScore));
+}
+
 
 start.addEventListener("click", hide);
 start.addEventListener("click", setquestions);  
 start.addEventListener("click", startTimer);
 setText.addEventListener("click", Start);
-saved.addEventListener('click', save_score);
+saved.addEventListener('click', storeScore);
+
