@@ -7,7 +7,7 @@ var scoreEl = document.querySelector(".score");
 var saved = document.querySelector(".save_close");
 var names = document.getElementById("name_input");
 var scoretrack = document.querySelector("#scores");
-
+var closes = document.getElementsByClassName("closes")
 var timercount = 60;
 var count =0;
 var score = 0;
@@ -16,11 +16,11 @@ var highScore = {
     scores: [],};
 const test = [
     {Question: "Which of the following indicates that A is equivalent to B in both value and type", answers: {A:"A === B", B:"A = B", C:"A == B", D:"A != B"}, correctAnswer:'A'},
-    {Question: "What is that starting index value of an Array", answers: {A:"1", B:"o2", C:"3", D:"0"}, correctAnswer:'D'},
+    {Question: "What is that starting index value of an Array", answers: {A:"1", B:"2", C:"3", D:"0"}, correctAnswer:'D'},
     {Question: "What is an element ID identifier?", answers: {A:"@", B:".", C:"#", D:"&"}, correctAnswer:'C'},
-    {Question: "What element do you need to add before using a function to edit style elements?", answers: {A:".", B:"none", C:".css", D:".style"}, correctAnswer:'D'},
+    {Question: "What element do you need to add before using a function to edit style elements?", answers: {A:"(.)", B:"none", C:".css", D:".style"}, correctAnswer:'D'},
     {Question: "Where should the link to .JS be in HTML?", answers: {A:"At the top", B:"At the bottom", C:"Anywhere", D:"In the body"}, correctAnswer:'B'},
-    {Question: "test 6?", answers: {A:"op1", B:"op2", C:"op3", D:"op4"}, correctAnswer:'B'},
+    {Question: "What phrase will take an if statement to a second option to see if its true?", answers: {A:"else if", B:"next", C:"if false", D:"else"}, correctAnswer:'B'},
 ];
 var correct_Answer = test.map(function (el) { return el.correctAnswer;});
 
@@ -75,8 +75,9 @@ else if (count == test.length -1) {
     gameover();
 
 }
-document.getElementById("MC").reset();
+
 scores();
+document.getElementById("MC").reset();
 };
 function gameover() {
     document.getElementsByClassName('score')[1].textContent= score
@@ -94,19 +95,20 @@ function init() {
             name: [],
             scores: [],};
     }
-    document.getElementsByClassName("scores")[0].innerHTML = Math.max.apply(null, highScore.scores);
+    document.getElementsByClassName("scores")[0].innerHTML = Math.max.apply(null, highScore.scores); 
         
 }
 function storeScore() {
     highScore.name.push(names.value);
-    highScore.scores.push(score)
-    highScore.scores.sort((a, b) => (a > b) ? 1 : -1);
-    localStorage.setItem("highScore", JSON.stringify(highScore));
-  };
-  document.getElementsByClassName("save_score")[0].style.display = "none";
-//   document.getElementsByClassName("highscore")[0].style.display = "block";
- 
-init()
+    highScore.scores.push(score);
+    for (let i=0; i <5; i++){
+        document.getElementById("scores").children[i].textContent = highScore.name[i] +" with a score of " + highScore.scores[i]
+    }
+    // highScore.scores.sort((a, b) => (a > b) ? 1 : -1);  document.getElementsByClassName("save_score")[0].style.display = "none";
+    document.getElementsByClassName("save_score")[0].style.display = "none";
+    document.getElementsByClassName("highscore")[0].style.display = "block"; 
+    localStorage.setItem("highScore", JSON.stringify(highScore));};
+   
 
 
 start.addEventListener("click", hide);
@@ -114,4 +116,3 @@ start.addEventListener("click", setquestions);
 start.addEventListener("click", startTimer);
 setText.addEventListener("click", Start);
 saved.addEventListener('click', storeScore);
-
