@@ -5,22 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./Assets/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <title>Coding Quiz</title>
 </head>
 
 <body>
-<header>
-  <div> High scores</div>
-  <div> Time left:<span class="time"> 60</span></div>
-  <div> Current score <span class="score"></span></div>
+<header class="container-fluid bg-dark text-light mb-5 p-3">
+  <div >Current high score <span class="scores" ></span></div>
+  <div> Time left: <span class="time" > 60</span></div>
+  <div> Current score <span class="score" ></span></div>
 </header>
-<section id="welcome">
+<section id="welcome" class="container-md border border-dark p-3">
     <div> Coding Quiz</div>
-    <p> Welcome to my coding quiz. You will be presented with up to X questions about javascript. For each correct answer you will be awarded 10 points and move on the next question. If you get a question wrong, then you will lose 10 seconds before proceeding to the next questions. You will start out with a total of 60 seconds. 
+    <p> Welcome to my coding quiz. You will be presented with up to 10 questions about javascript. For each correct answer you will be awarded 10 points and move on the next question. If you get a question wrong, then you will lose 10 seconds before proceeding to the next questions. You will start out with a total of 60 seconds. 
     </p>
     <button class="start"> Start</button> 
 </section>
-<section class="questions">
+<section class="questions container-md border border-dark p-3">
     <h1 > </h1>
     <form id="MC">
 
@@ -51,7 +52,13 @@
 </section>
 <section class="highscore">
     <h1>High Scores</h1>
-    <ul id="scores"> </ul>
+    <ul id="scores"> 
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>  
 </section>
     
 <script src="./Assets/script.js"></script>  
