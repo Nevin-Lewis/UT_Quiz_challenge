@@ -21,9 +21,12 @@ const test = [
     {Question: "What element do you need to add before using a function to edit style elements?", answers: {A:"(.)", B:"none", C:".css", D:".style"}, correctAnswer:'D'},
     {Question: "Where should the link to .JS be in HTML?", answers: {A:"At the top", B:"At the bottom", C:"Anywhere", D:"In the body"}, correctAnswer:'B'},
     {Question: "What phrase will take an if statement to a second option to see if its true?", answers: {A:"else if", B:"next", C:"if false", D:"else"}, correctAnswer:'B'},
+    {Question: "What does querry selector return", answers: {A:"an element", B:"a list", C:"an array", D:"a function"}, correctAnswer:'A'},
+    {Question: "How do you add an a function that occurs after someone does an action", answers: {A:"add a function", B:"add a loop", C:"add an event listener", D:"its impossible"}, correctAnswer:'C'},
+    {Question: "What phrase will add the element to the end of an array", answers: {A:".add", B:".slice", C:".push", D:".array"}, correctAnswer:'C'},
+    {Question: "What text will search for the next subsection of an object", answers: {A:".nextElement", B:".children", C:".subsect", D:".indent"}, correctAnswer:'B'},
 ];
 var correct_Answer = test.map(function (el) { return el.correctAnswer;});
-
 function hide(){
     document.getElementById("welcome").style.display = "none";
     document.getElementsByClassName("questions")[0].style.display = "block";
@@ -41,6 +44,7 @@ function startTimer() {
     },1000)
 };
 function setquestions() {
+    init();
     scores();
 document.getElementsByClassName("questions")[0].children[0].textContent = test[count].Question
     document.getElementsByName("Multiple_choice")[0].textContent =`A. ${test[count].answers.A}`;
@@ -52,7 +56,6 @@ document.getElementsByClassName("questions")[0].children[0].textContent = test[c
 
 function Start(event){
 event.preventDefault();
-init();
 var user_Answer = document.querySelector('input[type=radio]:checked').value;
 if (user_Answer == correct_Answer[count]){
     score += 10;}
@@ -89,27 +92,34 @@ function init() {
     var save_highScore = JSON.parse(localStorage.getItem("highScore"));
     if (save_highScore !== null) {
     highScore = save_highScore;
+    document.getElementsByClassName("scores")[0].innerHTML = Math.max.apply(null, highScore.scores);
         }
     else {
         highScore = {
             name: [],
-            scores: [],};
+            scores:[],};
     }
-    document.getElementsByClassName("scores")[0].innerHTML = Math.max.apply(null, highScore.scores); 
+    
         
 }
 function storeScore() {
     highScore.name.push(names.value);
     highScore.scores.push(score);
     for (let i=0; i <5; i++){
-        document.getElementById("scores").children[i].textContent = highScore.name[i] +" with a score of " + highScore.scores[i]
+        if (highScore.name[i] !== undefined){
+        document.getElementById("scores").children[i].textContent = highScore.name[i] +" with a score of " + highScore.scores[i]}
+    else {
+        document.getElementById("scores").children[i].style.textContent = "";
+        document.getElementById("scores").children[i].style.listStyleType = "none";
+    }
+
     }
     // highScore.scores.sort((a, b) => (a > b) ? 1 : -1);  document.getElementsByClassName("save_score")[0].style.display = "none";
     document.getElementsByClassName("save_score")[0].style.display = "none";
     document.getElementsByClassName("highscore")[0].style.display = "block"; 
     localStorage.setItem("highScore", JSON.stringify(highScore));};
    
-
+   
 
 start.addEventListener("click", hide);
 start.addEventListener("click", setquestions);  
