@@ -18,14 +18,14 @@ var highScore = {
 const test = [
     {Question: "Which of the following indicates that A is equivalent to B in both value and type", answers: {A:"A === B", B:"A = B", C:"A == B", D:"A != B"}, correctAnswer:'A'},
     {Question: "What is that starting index value of an Array", answers: {A:"1", B:"2", C:"3", D:"0"}, correctAnswer:'D'},
-    // {Question: "What is an element ID identifier?", answers: {A:"@", B:".", C:"#", D:"&"}, correctAnswer:'C'},
-    // {Question: "What element do you need to add before using a function to edit style elements?", answers: {A:"(.)", B:"none", C:".css", D:".style"}, correctAnswer:'D'},
-    // {Question: "Where should the link to .JS be in HTML?", answers: {A:"At the top", B:"At the bottom", C:"Anywhere", D:"In the body"}, correctAnswer:'B'},
-    // {Question: "What phrase will take an if statement to a second option to see if its true?", answers: {A:"else if", B:"next", C:"if false", D:"else"}, correctAnswer:'B'},
-    // {Question: "What does querry selector return", answers: {A:"an element", B:"a list", C:"an array", D:"a function"}, correctAnswer:'A'},
-    // {Question: "How do you add an a function that occurs after someone does an action", answers: {A:"add a function", B:"add a loop", C:"add an event listener", D:"its impossible"}, correctAnswer:'C'},
-    // {Question: "What phrase will add the element to the end of an array", answers: {A:".add", B:".slice", C:".push", D:".array"}, correctAnswer:'C'},
-    // {Question: "What text will search for the next subsection of an object", answers: {A:".nextElement", B:".children", C:".subsect", D:".indent"}, correctAnswer:'B'},
+    {Question: "What is an element ID identifier?", answers: {A:"@", B:".", C:"#", D:"&"}, correctAnswer:'C'},
+    {Question: "What element do you need to add before using a function to edit style elements?", answers: {A:"(.)", B:"none", C:".css", D:".style"}, correctAnswer:'D'},
+    {Question: "Where should the link to .JS be in HTML?", answers: {A:"At the top", B:"At the bottom", C:"Anywhere", D:"In the body"}, correctAnswer:'B'},
+    {Question: "What phrase will take an if statement to a second option to see if its true?", answers: {A:"else if", B:"next", C:"if false", D:"else"}, correctAnswer:'B'},
+    {Question: "What does querry selector return", answers: {A:"an element", B:"a list", C:"an array", D:"a function"}, correctAnswer:'A'},
+    {Question: "How do you add an a function that occurs after someone does an action", answers: {A:"add a function", B:"add a loop", C:"add an event listener", D:"its impossible"}, correctAnswer:'C'},
+    {Question: "What phrase will add the element to the end of an array", answers: {A:".add", B:".slice", C:".push", D:".array"}, correctAnswer:'C'},
+    {Question: "What text will search for the next subsection of an object", answers: {A:".nextElement", B:".children", C:".subsect", D:".indent"}, correctAnswer:'B'},
 ];
 var correct_Answer = test.map(function (el) { return el.correctAnswer;});
 function hide(){
